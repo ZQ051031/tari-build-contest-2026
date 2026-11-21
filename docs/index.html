@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101412">
+  <title>Tari Milestone Escrow</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand"><span class="mark" aria-hidden="true">↗</span> TARI <span class="brand-detail">/ BUILD CONTEST 2026</span></div>
+      <span class="chip chip-sim"><span aria-hidden="true"></span> Walletless simulation</span>
+    </header>
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">THE AGREEMENT WORKBENCH</p>
+      <h1 id="title">Milestone<br><em>Escrow.</em></h1>
+      <div class="hero-copy"><p>Lock the budget up front. Pay for work as it’s delivered.</p>
+      <p class="muted">No wallet, network, or real funds. All amounts below are simulated XTM.</p></div>
+    </section>
+
+    <section class="guide" aria-labelledby="guide-title">
+      <div>
+        <p class="eyebrow" id="guide-progress">GUIDED DEMO · 01 / 10</p>
+        <h2 id="guide-title">Create the sample agreement</h2>
+        <p id="guide-detail">Three milestones, three roles, and 600 simulated XTM. Follow all ten steps or use the workbench below.</p>
+      </div>
+      <button id="guide-next" class="primary" type="button">Run step <span aria-hidden="true">↗</span></button>
+    </section>
+
+    <div class="workspace">
+      <section class="panel agreement" aria-labelledby="agreement-title">
+        <div class="section-head">
+          <div><p class="eyebrow">01 / AGREEMENT</p><h2 id="agreement-title">Escrow desk</h2></div>
+          <span id="contract-state" class="chip">Draft</span>
+        </div>
+        <form id="create-form">
+          <p class="muted">Start with the sample terms or enter your own. Creating the agreement does not lock funds.</p>
+          <div class="fields three">
+            <label>Payer<input name="payer" value="Northstar Studio" required maxlength="36"></label>
+            <label>Payee<input name="payee" value="Mika Chen" required maxlength="36"></label>
+            <label>Arbiter<input name="arbiter" value="Neutral Review" required maxlength="36"></label>
+          </div>
+          <div class="fields two">
+            <label>Total (simulated XTM)<input name="total" type="number" min="1" step="1" value="600" required></label>
+            <label>Milestones<select name="count"><option value="2">2 milestones</option><option value="3" selected>3 milestones</option></select></label>
+          </div>
+          <div id="terms"></div>
+          <button type="submit" class="primary">Create escrow <span aria-hidden="true">↗</span></button>
+        </form>
+        <div id="active" hidden>
+          <dl class="stats">
+            <div><dt>Locked</dt><dd id="locked">0</dd></div>
+            <div><dt>Paid to payee</dt><dd id="paid">0</dd></div>
+            <div><dt>Refunded to payer</dt><dd id="refunded">0</dd></div>
+          </dl>
+          <p id="contract-summary" class="muted"></p>
+          <div class="fields two">
+            <label>Acting as<select id="role"></select></label>
+            <div class="clock"><span>Simulated clock</span><div><strong id="epoch">Epoch 1</strong><button id="advance" class="ghost" type="button">+1 epoch</button></div></div>
+          </div>
+          <button id="fund" class="primary" type="button">Fund exact total <span aria-hidden="true">↗</span></button>
+          <div id="milestones"></div>
+        </div>
+      </section>
+
+      <aside class="panel history" aria-labelledby="ledger-title">
+        <div class="section-head"><div><p class="eyebrow">02 / EVENT LOG</p><h2 id="ledger-title">Simulated ledger</h2></div><button id="reset" type="button" class="ghost">Reset</button></div>
+        <p id="log-empty" class="muted">Accepted actions and rejected attempts appear here. Nothing is sent to a network.</p>
+        <ol id="ledger"></ol>
+        <p id="notice" class="sr-only" role="status"></p>
+      </aside>
+    </div>
+    <footer><span>TARI MILESTONE ESCROW</span><span>Demo state stays in this tab and resets on reload.</span></footer>
+  </main>
+</body>
+</html>

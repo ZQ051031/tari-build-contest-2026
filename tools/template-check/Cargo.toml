@@ -1,0 +1,10 @@
+[package]
+name = "tari-milestone-template-check"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+
+[dev-dependencies]
+tari_engine = "=0.55.0"
+tari_template_test_tooling = "=0.55.0"

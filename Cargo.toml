@@ -1,0 +1,17 @@
+[package]
+name = "tari-milestone-escrow"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+minicbor = { version = "2", features = ["derive", "std"] }
+tari_template_lib = "=0.42.0"
+
+[profile.release]
+lto = true
+opt-level = "z"
+strip = "symbols"
